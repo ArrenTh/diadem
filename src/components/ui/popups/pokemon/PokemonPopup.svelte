@@ -415,7 +415,7 @@
 			<BasicMainCard>
 				<div class="-mx-4 mt-2">
 					<div class="flex w-full gap-3 overflow-x-auto px-4 *:shrink-0">
-						{#each getPvpPopupEntries(data) as pokemon}
+						{#each getPvpPopupEntries(data) as pokemon (`${pokemon.league}-${pokemon.pokemon_id}-${pokemon.form}-${pokemon.rank}-${pokemon.cap}`)}
 							<div class="min-w-80 max-w-96 rounded-md bg-accent-highlight px-5 py-4">
 								<div class="flex items-center gap-3">
 									<div class="size-12 shrink-0 relative">
