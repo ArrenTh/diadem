@@ -28,7 +28,7 @@ import {
 } from "@/lib/mapObjects/mapObjectTypes";
 import { getUserSettings } from "@/lib/services/userSettings.svelte";
 import { currentTimestamp } from "@/lib/utils/currentTimestamp";
-import { circle } from "@turf/turf";
+import { rangeCircle } from "@/lib/utils/rangeGeometry";
 import { getFocusedRouteMapId, setFocusedRouteMapId } from "$lib/features/focusedRoute.svelte.js";
 import { routeStartsAt } from "@/lib/utils/routeUtils";
 
@@ -125,10 +125,7 @@ function getActionRadiusFeature(type: MapObjectType, mapId: string, center: [num
 
 	if (!radius) return;
 
-	const feature = circle(center, radius, {
-		steps: 96,
-		units: "meters"
-	});
+	const feature = rangeCircle(center, radius, { steps: 96 });
 
 	return getPolygonFeature(mapId + "-radius", [feature.geometry.coordinates], {
 		id: mapId,
